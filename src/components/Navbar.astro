@@ -1,0 +1,24 @@
+---
+import Search from "../components/ui/Search.tsx";
+import TabContainer from "./ui/TabContainer";
+---
+
+<nav class="border-b-[1px] border-foreground/20 py-6 lg:h-[5.5rem]">
+  <div
+    class="layout flex flex-col items-center justify-center space-y-5 lg:flex-row lg:justify-between lg:space-y-0"
+  >
+    <div
+      class="flex flex-col items-center justify-center space-y-5 lg:flex-row lg:space-x-10 lg:space-y-0"
+    >
+      <h1 class="text-3xl font-bold text-primary md:text-4xl">
+        Does It Mutate?
+      </h1>
+      <div class="relative">
+        <Search client:load />
+      </div>
+    </div>
+    <div>
+      <TabContainer client:load />
+    </div>
+  </div>
+</nav>
