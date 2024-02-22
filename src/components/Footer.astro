@@ -1,0 +1,72 @@
+---
+import { Icon } from "astro-icon/components";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-16">
+  <div
+    class="layout flex flex-col items-center justify-center space-y-10 md:text-lg"
+  >
+    <p>
+      Original website
+      <a
+        href="https://doesitmutate.xyz/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-semibold hover:text-primary"
+        >DoesItMutate
+      </a>
+      created by
+      <a
+        href="https://twitter.com/rem"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-semibold hover:text-primary">@rem</a
+      >
+    </p>
+    <div class="flex items-center justify-center space-x-8">
+      <a
+        href="https://github.com/antonio-lopez"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="antonio lopez github link"
+      >
+        <Icon
+          name="github"
+          width={32}
+          height={32}
+          title="antonio lopez github link"
+          class="transition-colors hover:text-primary"
+        />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/antoniolopez6/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="antonio lopez linkedin link"
+      >
+        <Icon
+          name="linkedin"
+          width={32}
+          height={32}
+          title="antonio lopez linkedin link"
+          class="transition-colors hover:text-primary"
+        />
+      </a>
+      <a
+        href="mailto:antonioxalopez@gmail.com"
+        title="antonio lopez email link"
+      >
+        <Icon
+          name="envelope"
+          width={32}
+          height={32}
+          title="antonio lopez email link"
+          class="transition-colors hover:text-primary"
+        />
+      </a>
+    </div>
+    <p>© Antonio Lopez {currentYear}</p>
+  </div>
+</footer>
