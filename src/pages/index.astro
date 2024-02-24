@@ -4,14 +4,15 @@ import "@/styles/globals.css";
 import { getCollection } from "astro:content";
 
 const methods = await getCollection("methods");
-
-console.log(methods);
 ---
 
-<Layout title="Welcome to Astro.">
-  <main>
-    Does It Mutate?
-
-    {methods.map((el) => el.data.title)}
+<Layout title="Does It Mutate">
+  <main class="layout grid lg:grid-cols-[240px_1fr]">
+    <aside class="border-r-[1px] border-foreground/20">
+      <ol class="mt-7 flex flex-col space-y-3">
+        {methods.map((el) => <li>{el.data.title}</li>)}
+      </ol>
+    </aside>
+    <div></div>
   </main>
 </Layout>
