@@ -1,8 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@/styles/globals.css";
+import { getCollection } from "astro:content";
+
+const methods = await getCollection("methods");
+
+console.log(methods);
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>Does It Mutate?</main>
+  <main>
+    Does It Mutate?
+
+    {methods.map((el) => el.data.title)}
+  </main>
 </Layout>
