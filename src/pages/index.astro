@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import "@/styles/globals.css";
 import { getCollection } from "astro:content";
+import CardMethod from "@/components/ui/CardMethod.astro";
 
 const methods = await getCollection("methods");
 ---
@@ -13,6 +14,22 @@ const methods = await getCollection("methods");
         {methods.map((el) => <li>{el.data.title}</li>)}
       </ol>
     </aside>
-    <div></div>
+    <div class="mx-8 mt-7">
+      {
+        methods.map(async (method) => {
+          const { Content } = await method.render();
+          return (
+            <CardMethod
+              title={method.data.title}
+              mutation={method.data.mutation}
+            >
+              <div class="prose max-w-none space-y-4 text-foreground prose-h3:text-2xl prose-h3:font-medium prose-h3:text-foreground prose-p:text-foreground prose-a:text-primary prose-a:underline prose-pre:p-4">
+                <Content />
+              </div>
+            </CardMethod>
+          );
+        })
+      }
+    </div>
   </main>
 </Layout>

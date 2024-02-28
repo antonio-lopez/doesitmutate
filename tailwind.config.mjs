@@ -4,6 +4,17 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   prefix: "",
   theme: {
+    typography: {
+      DEFAULT: {
+        css: {
+          pre: false,
+          code: false,
+          "pre code": false,
+          "code::before": false,
+          "code::after": false,
+        },
+      },
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -72,5 +83,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
