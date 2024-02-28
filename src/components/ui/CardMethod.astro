@@ -22,5 +22,9 @@ const { title, mutation } = Astro.props;
       )
     }
   </div>
-  <slot />
+  <div
+    class="prose max-w-none space-y-4 text-foreground prose-h3:text-xl prose-h3:font-medium prose-h3:text-foreground prose-p:text-foreground prose-a:text-primary prose-a:underline prose-pre:p-4 lg:prose-h3:text-2xl"
+  >
+    <slot />
+  </div>
 </div>
