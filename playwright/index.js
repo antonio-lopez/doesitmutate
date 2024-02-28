@@ -1,11 +1,10 @@
-// @ts-check
-import { chromium } from "playwright/test";
+import pw from "playwright";
 import fs from "fs/promises";
 
 (async () => {
   const data = [];
   console.log("Connecting to browser...");
-  const browser = await chromium.launch();
+  const browser = await pw.chromium.launch();
   console.log("Connected...");
   const page = await browser.newPage();
   try {
