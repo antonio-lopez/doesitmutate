@@ -8,13 +8,13 @@ const methods = await getCollection("methods");
 ---
 
 <Layout title="Does It Mutate">
-  <main class="layout grid lg:grid-cols-[240px_1fr]">
-    <aside class="border-r-[1px] border-foreground/20">
+  <main class="layout grid grid-cols-1 lg:grid-cols-[240px_1fr]">
+    <aside class="hidden border-r-[1px] border-foreground/20 lg:flex">
       <ol class="mt-7 flex flex-col space-y-3">
         {methods.map((el) => <li>{el.data.title}</li>)}
       </ol>
     </aside>
-    <div class="mx-8 mt-7">
+    <div class="mt-14 lg:mx-8 lg:mt-7">
       {
         methods.map(async (method) => {
           const { Content } = await method.render();
@@ -23,7 +23,7 @@ const methods = await getCollection("methods");
               title={method.data.title}
               mutation={method.data.mutation}
             >
-              <div class="prose max-w-none space-y-4 text-foreground prose-h3:text-2xl prose-h3:font-medium prose-h3:text-foreground prose-p:text-foreground prose-a:text-primary prose-a:underline prose-pre:p-4">
+              <div class="prose max-w-none space-y-4 text-foreground prose-h3:text-xl prose-h3:font-medium prose-h3:text-foreground prose-p:text-foreground prose-a:text-primary prose-a:underline prose-pre:p-4 lg:prose-h3:text-2xl">
                 <Content />
               </div>
             </CardMethod>
