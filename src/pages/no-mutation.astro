@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import CardMethod from "@/components/ui/CardMethod.astro";
 import { getCollection } from "astro:content";
 import { Badge } from "@/components/ui/badge";
+import Search from "@/components/ui/Search";
 
 const noMutations = await getCollection("methods", ({ data }) => {
   return data.mutation !== "mutates";
@@ -27,6 +28,9 @@ const noMutations = await getCollection("methods", ({ data }) => {
       </div>
     </aside>
     <div class="mt-14 lg:mx-8 lg:mt-7">
+      <div class="relative mb-14 flex items-center justify-center lg:hidden">
+        <Search methods={noMutations} client:media="(max-width: 1024px)" />
+      </div>
       {
         noMutations.map(async (mutates) => {
           const { Content } = await mutates.render();
