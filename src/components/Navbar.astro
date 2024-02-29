@@ -1,6 +1,9 @@
 ---
 import Search from "../components/ui/Search.tsx";
 import TabContainer from "./ui/TabContainer";
+
+const currentUrl = Astro.url.pathname;
+const currentPath = currentUrl.split("/").join("");
 ---
 
 <nav class="border-b-[1px] border-foreground/20 py-6 lg:h-[5.5rem]">
@@ -16,7 +19,7 @@ import TabContainer from "./ui/TabContainer";
       </div>
     </div>
     <div>
-      <TabContainer client:load />
+      <TabContainer currentPath={currentPath} client:load />
     </div>
   </div>
 </nav>

@@ -1,12 +1,22 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const TabsContainer = () => {
+interface LinkProps {
+  currentPath: string;
+}
+
+const TabsContainer = ({ currentPath }: LinkProps) => {
   return (
-    <Tabs defaultValue="allMethods">
+    <Tabs defaultValue={currentPath}>
       <TabsList>
-        <TabsTrigger value="allMethods">All Methods</TabsTrigger>
-        <TabsTrigger value="noMutation">No Mutation</TabsTrigger>
-        <TabsTrigger value="mutation">Mutation</TabsTrigger>
+        <TabsTrigger value="">
+          <a href="/">All Methods</a>
+        </TabsTrigger>
+        <TabsTrigger value="no-mutation">
+          <a href="/no-mutation">No Mutation</a>
+        </TabsTrigger>
+        <TabsTrigger value="mutation">
+          <a href="/mutation">Mutation</a>
+        </TabsTrigger>
       </TabsList>
     </Tabs>
   );
