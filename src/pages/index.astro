@@ -9,9 +9,15 @@ const methods = await getCollection("methods");
 
 <Layout title="Does It Mutate">
   <main class="layout grid grid-cols-1 lg:grid-cols-[240px_1fr]">
-    <aside class="hidden border-r-[1px] border-foreground/20 lg:flex">
+    <aside class="hidden border-r-[1px] border-foreground/20 lg:flex lg:sticky lg:top-20 lg:max-h-[calc(100vh-9rem)] lg:overflow-auto">
       <ol class="mt-7 flex flex-col space-y-3">
-        {methods.map((el) => <li>{el.data.title}</li>)}
+        {
+          methods.map((method) => (
+            <li>
+              <a href=`#${method.data.title}`>{method.data.title}</a>
+            </li>
+          ))
+        }
       </ol>
     </aside>
     <div class="mt-14 lg:mx-8 lg:mt-7">
