@@ -6,34 +6,35 @@ import {
 } from "@/components/ui/command";
 import React from "react";
 
-const Search = () => {
-  const [open, setOpen] = React.useState(false);
+interface MethodProps {
+  methods: any;
+}
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
-      }
-    };
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
+const Search = ({ methods }: MethodProps) => {
+  const [open, setOpen] = React.useState(false);
 
   return (
     <Command className="w-full rounded-lg border md:w-[26.25rem]">
       <CommandInput
         onFocus={() => setOpen(true)}
         onBlur={() => setOpen(false)}
-        placeholder="Type a command or search..."
+        placeholder="Search for method..."
       />
       {open && (
-        <CommandList className="absolute top-10 z-10 max-h-[300px] w-full">
-          <CommandItem> one </CommandItem>
-          <CommandItem> two </CommandItem>
-          <CommandItem> three </CommandItem>
-          <CommandItem> four </CommandItem>
-          <CommandItem> five </CommandItem>
+        <CommandList className="absolute top-10 z-10 max-h-[300px] w-full md:w-[26.25rem]">
+          {methods.map((method: any) => (
+            <CommandItem
+              key={method.data.title}
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+            >
+              <a className="w-full" href={`#${method.data.title}`}>
+                {method.data.title}
+              </a>
+            </CommandItem>
+          ))}
         </CommandList>
       )}
     </Command>

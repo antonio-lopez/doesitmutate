@@ -1,5 +1,4 @@
 ---
-import Search from "../components/ui/Search.tsx";
 import TabContainer from "./ui/TabContainer";
 
 const currentUrl = Astro.url.pathname;
@@ -14,9 +13,6 @@ const currentPath = currentUrl.split("/").join("");
       class="flex flex-col items-center justify-center space-y-5 lg:flex-row lg:space-x-10 lg:space-y-0"
     >
       <h1 class="text-4xl font-bold text-primary">Does It Mutate?</h1>
-      <div class="relative">
-        <Search client:load />
-      </div>
     </div>
     <div>
       <TabContainer currentPath={currentPath} client:load />

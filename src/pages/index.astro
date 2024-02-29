@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { getCollection } from "astro:content";
 import CardMethod from "@/components/ui/CardMethod.astro";
 import { Badge } from "@/components/ui/badge";
+import Search from "@/components/ui/Search";
 
 const methods = await getCollection("methods");
 ---
@@ -26,7 +27,10 @@ const methods = await getCollection("methods");
       </ol>
     </div>
     </aside>
-    <div class="mt-14 lg:mx-8 lg:mt-7">
+    <div class="mt-14 lg:mx-8 lg:mt-7 ">
+      <div class="relative mb-14 flex items-center justify-center lg:hidden">
+        <Search methods={methods} client:media="(max-width: 1024px)" />
+      </div>
       {
         methods.map(async (method) => {
           const { Content } = await method.render();
