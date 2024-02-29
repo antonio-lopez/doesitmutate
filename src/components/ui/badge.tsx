@@ -10,6 +10,7 @@ const badgeVariants = cva(
       variant: {
         default: "bg-success text-foreground",
         destructive: "bg-destructive text-foreground",
+        all: "bg-primary text-accent",
       },
     },
     defaultVariants: {

@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import "@/styles/globals.css";
 import CardMethod from "@/components/ui/CardMethod.astro";
 import { getCollection } from "astro:content";
+import { Badge } from "@/components/ui/badge";
 
 const noMutations = await getCollection("methods", ({ data }) => {
   return data.mutation !== "mutates";
@@ -12,15 +13,18 @@ const noMutations = await getCollection("methods", ({ data }) => {
 <Layout title="Does It Mutate | Mutates">
   <main class="layout grid grid-cols-1 lg:grid-cols-[240px_1fr]">
     <aside class="hidden border-r-[1px] border-foreground/20 lg:flex lg:sticky lg:top-20 lg:max-h-[calc(100vh-9rem)] lg:overflow-auto">
-      <ol class="mt-7 flex flex-col space-y-3">
-        {
-          noMutations.map((mutates) => (
-            <li>
-              <a href=`#${mutates.data.title}`>{mutates.data.title}</a>
-            </li>
-          ))
-        }
-      </ol>
+      <div class="mt-7 flex flex-col">
+        <Badge variant="default">no mutation</Badge>
+        <ol class="mt-7 flex flex-col space-y-3">
+          {
+            noMutations.map((mutates) => (
+              <li>
+                <a href=`#${mutates.data.title}`>{mutates.data.title}</a>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
     </aside>
     <div class="mt-14 lg:mx-8 lg:mt-7">
       {
