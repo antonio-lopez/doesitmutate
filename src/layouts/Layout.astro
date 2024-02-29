@@ -5,6 +5,7 @@ import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import { SEO } from "astro-seo";
 interface Props {
   title: string;
 }
@@ -19,7 +20,49 @@ const { title } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={title}
+      description="Explore methods that modify the original array alongside their descriptions and sample code. Distinguish between mutating and non-mutating methods through filtering."
+      canonical="https://doesitmutate.vercel.app/"
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          url: "https://doesitmutate.vercel.app/",
+          image:
+            "https://res.cloudinary.com/dloisor1x/image/upload/v1709237651/portfolio/doesitmutate/doesitmutate-og_xngcit.png",
+        },
+        image: {
+          url: "https://res.cloudinary.com/dloisor1x/image/upload/v1709237651/portfolio/doesitmutate/doesitmutate-og_xngcit.png",
+          type: "image/png",
+          width: 1200,
+          height: 630,
+          alt: "does it mutate open graph",
+        },
+        optional: {
+          description:
+            "Explore methods that modify the original array alongside their descriptions and sample code. Distinguish between mutating and non-mutating methods through filtering.",
+        },
+      }}
+      twitter={{
+        title: title,
+        description:
+          "Explore methods that modify the original array alongside their descriptions and sample code. Distinguish between mutating and non-mutating methods through filtering.",
+        image:
+          "https://res.cloudinary.com/dloisor1x/image/upload/v1709237651/portfolio/doesitmutate/doesitmutate-og_xngcit.png",
+        imageAlt: "does it mutate open graph",
+        card: "summary_large_image",
+      }}
+    />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
     <title>{title}</title>
   </head>
   <body>
