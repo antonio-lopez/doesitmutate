@@ -1,8 +1,41 @@
 ---
-import "@/styles/globals.css";
+import CardMethod from "@/components/ui/CardMethod.astro";
 import Layout from "../layouts/Layout.astro";
+import "@/styles/globals.css";
+import { getCollection } from "astro:content";
+
+const mutations = await getCollection("methods", ({ data }) => {
+  return data.mutation !== "no mutation";
+});
 ---
 
-<Layout title="Does It Mutate | Mutations">
-  <h1>sdfsd</h1>
+<Layout title="Does It Mutate | Mutates">
+  <main class="layout grid grid-cols-1 lg:grid-cols-[240px_1fr]">
+    <aside class="hidden border-r-[1px] border-foreground/20 lg:flex lg:sticky lg:top-20 lg:max-h-[calc(100vh-9rem)] lg:overflow-auto">
+      <ol class="mt-7 flex flex-col space-y-3">
+        {
+          mutations.map((mutates) => (
+            <li>
+              <a href=`#${mutates.data.title}`>{mutates.data.title}</a>
+            </li>
+          ))
+        }
+      </ol>
+    </aside>
+    <div class="mt-14 lg:mx-8 lg:mt-7">
+      {
+        mutations.map(async (mutates) => {
+          const { Content } = await mutates.render();
+          return (
+            <CardMethod
+              title={mutates.data.title}
+              mutation={mutates.data.mutation}
+            >
+              <Content />
+            </CardMethod>
+          );
+        })
+      }
+    </div>
+  </main>
 </Layout>
